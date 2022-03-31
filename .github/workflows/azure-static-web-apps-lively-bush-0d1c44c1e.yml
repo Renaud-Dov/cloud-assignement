@@ -10,7 +10,7 @@ on:
       - master
 
 env:
-  CI = true
+  CI: false
 
 jobs:
   build_and_deploy_job:
