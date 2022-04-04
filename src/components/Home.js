@@ -1,9 +1,11 @@
 import {Component} from "react";
+import {Link} from "react-router-dom";
 
 export class Home extends Component {
     render() {
         return (
             <div>
+                <Link to="/about"> toto</Link>
                 <h1>Home</h1>
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
