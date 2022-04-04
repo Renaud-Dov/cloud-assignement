@@ -1,12 +1,9 @@
 {
   "navigationFallback": {
-    "rewrite": "/index.html"
+    "rewrite": "index.html",
+    "exclude": ["/static/images/*.{png,jpg,gif}", "/static/css/*"]
   },
-  "routes": [
-    {
-      "route": "/about",
-      "statusCode": 301
-    }
-
-  ]
+  "mimeTypes": {
+    ".json": "text/json"
+  }
 }
