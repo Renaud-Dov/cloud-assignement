@@ -16,30 +16,12 @@ import {
     XIcon,
 } from '@heroicons/react/outline'
 import {ChevronDownIcon} from '@heroicons/react/solid'
+import {Link} from "react-router-dom";
 
-const solutions = [
+const products  = [
     {
-        name: 'Analytics',
-        description: 'Get a better understanding of where your traffic is coming from.',
-        href: '#',
-        icon: ChartBarIcon,
-    }, {
-        name: 'Engagement',
-        description: 'Speak directly to your customers in a more meaningful way.',
-        href: '#',
-        icon: CursorClickIcon,
-    }, {
-        name: 'Security', description: "Your customers' data will be safe and secure.", href: '#', icon: ShieldCheckIcon
-    }, {
-        name: 'Integrations',
-        description: "Connect with third-party tools that you're already using.",
-        href: '#',
-        icon: ViewGridIcon,
-    }, {
-        name: 'Automations',
-        description: 'Build strategic funnels that will drive your customers to convert',
-        href: '#',
-        icon: RefreshIcon,
+        name:'Type 1',
+        href: '/products'
     }
 ]
 const callsToAction = [
@@ -54,7 +36,8 @@ const callsToAction = [
         icon: PhoneIcon
     }
 ]
-const resources = [{
+const resources = [
+    {
     name: 'Help Center',
     description: 'Get all of your questions answered in our forums or contact support.',
     href: '#',
@@ -70,7 +53,8 @@ const resources = [{
     href: '#',
     icon: CalendarIcon,
 }, {name: 'Security', description: 'Understand how we take your privacy seriously.', href: '#', icon: ShieldCheckIcon},]
-const recentPosts = [{id: 1, name: 'Boost your conversion rate', href: '#'}, {
+const recentPosts = [
+    {id: 1, name: 'Boost your conversion rate', href: '#'}, {
     id: 2,
     name: 'How to use search engine optimization to drive traffic to your site',
     href: '#'
@@ -86,14 +70,14 @@ export default function Header() {
             <div
                 className="flex justify-between items-center border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
                 <div className="flex justify-start lg:w-0 lg:flex-1">
-                    <a href="#">
+                    <Link to="/">
                         <span className="sr-only">Workflow</span>
                         <img
                             className="h-8 w-auto sm:h-10"
                             src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
                             alt=""
                         />
-                    </a>
+                    </Link>
                 </div>
                 <div className="-mr-2 -my-2 md:hidden">
                     <Popover.Button
@@ -163,12 +147,6 @@ export default function Header() {
                         </>)}
                     </Popover>
 
-                    <a href="#" className="text-base font-medium text-gray-500 hover:text-gray-900">
-                        Pricing
-                    </a>
-                    <a href="#" className="text-base font-medium text-gray-500 hover:text-gray-900">
-                        Docs
-                    </a>
 
                     <Popover className="relative">
                         {({open}) => (<>
@@ -299,13 +277,7 @@ export default function Header() {
                     </div>
                     <div className="py-6 px-5 space-y-6">
                         <div className="grid grid-cols-2 gap-y-4 gap-x-8">
-                            <a href="#" className="text-base font-medium text-gray-900 hover:text-gray-700">
-                                Pricing
-                            </a>
 
-                            <a href="#" className="text-base font-medium text-gray-900 hover:text-gray-700">
-                                Docs
-                            </a>
                             {resources.map((item) => (<a
                                 key={item.name}
                                 href={item.href}
