@@ -1,3 +1,3 @@
-export function Product() {
+export default function Product() {
     return null;
 }

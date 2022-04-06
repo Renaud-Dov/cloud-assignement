@@ -1,6 +1,6 @@
 import {Link} from "react-router-dom";
 
-export function NoMatch() {
+export default function NoMatch() {
     return <div
         className="
                     flex
@@ -9,8 +9,8 @@ export function NoMatch() {
                     w-screen
                     h-screen
                     bg-gradient-to-r
-                    from-indigo-600
-                    to-blue-400
+                    from-orange-600
+                    to-orange-400
                   ">
         <div className="px-40 py-20 bg-white rounded-md shadow-xl">
             <div className="flex flex-col items-center">

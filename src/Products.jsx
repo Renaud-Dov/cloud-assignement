@@ -60,7 +60,7 @@ function Card(element) {
     </div>
 }
 
-export function Products() {
+export default function Products() {
     return <div className="flex mt-4 flex-wrap gap-4 justify-center">
         {elements.map(element => <Card key={element.id_product} {...element}/>)}
     </div>
