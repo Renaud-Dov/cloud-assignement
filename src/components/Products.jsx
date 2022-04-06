@@ -1,9 +1,10 @@
 import {Link} from "react-router-dom";
 import {PlusIcon} from '@heroicons/react/solid'
-import {Rating} from "./components/Rating";
+import {Rating} from "./Rating";
+import {useEffect, useState} from "react";
 
 
-const elements = [
+const list = [
     {
         name: 'Product 1',
         id_product: 1,
@@ -61,6 +62,10 @@ function Card(element) {
 }
 
 export default function Products() {
+    const [elements, setElements] = useState([]);
+    useEffect(() => {
+        setElements(list);
+    }, []);
     return <div className="flex mt-4 flex-wrap gap-4 justify-center">
         {elements.map(element => <Card key={element.id_product} {...element}/>)}
     </div>

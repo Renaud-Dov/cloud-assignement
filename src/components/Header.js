@@ -2,16 +2,11 @@
 import {Fragment} from 'react'
 import {Popover, Transition} from '@headlessui/react'
 import {
-    BookmarkAltIcon,
     CalendarIcon,
-    ChartBarIcon,
-    CursorClickIcon,
     MenuIcon,
     PhoneIcon,
     PlayIcon,
-    RefreshIcon,
     ShieldCheckIcon,
-    SupportIcon,
     ViewGridIcon,
     XIcon,
 } from '@heroicons/react/outline'
@@ -22,9 +17,6 @@ function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
-const more = [{
-    name: 'Support', icon: SupportIcon, link: '/',
-}]
 const links = [{
     name: 'Products', icon: ViewGridIcon, link: '/products',
 }, {
@@ -66,7 +58,7 @@ export default function Header() {
                     <Popover className="relative">
                         {({open}) => (<>
                             <Popover.Button
-                                className={classNames(open ? 'text-gray-900' : 'text-gray-500', 'group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500')}
+                                className={classNames(open ? 'text-gray-900' : 'text-gray-500', 'group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900')}
                             >
                                 <span>More</span>
                                 <ChevronDownIcon
@@ -90,15 +82,16 @@ export default function Header() {
                                         className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
                                         <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
                                             {other_links.map((item, index) => (
-                                                <Link
-                                                    key={index}
-                                                    to={item.link}
+                                                <Popover.Button key={index}>
+                                                    <Link
+                                                        to={item.link}
 
-                                                    className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50">
-                                                    <item.icon className="flex-shrink-0 h-6 w-6 text-orange-600"
-                                                               aria-hidden="true"/>
-                                                    <p className="ml-4 text-base font-medium text-gray-900">{item.name}</p>
-                                                </Link>))}
+                                                        className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50">
+                                                        <item.icon className="flex-shrink-0 h-6 w-6 text-orange-600"
+                                                                   aria-hidden="true"/>
+                                                        <p className="ml-4 text-base font-medium text-gray-900">{item.name}</p>
+                                                    </Link>
+                                                </Popover.Button>))}
                                         </div>
                                     </div>
                                 </Popover.Panel>

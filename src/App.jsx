@@ -4,8 +4,8 @@ import Home from "./components/Home";
 import About from "./components/About";
 import Header from "./components/Header";
 import NoMatch from "./components/NoMatch";
-import Products from "./Products";
-import Product from "./Product";
+import Products from "./components/Products";
+import Product from "./components/Product";
 import FAQ from "./components/FAQ";
 
 // import Header from "./components/Header";
