@@ -1,5 +1,5 @@
 import {Link} from "react-router-dom";
-import {ArrowNarrowRightIcon} from '@heroicons/react/solid'
+import {PlusIcon} from '@heroicons/react/solid'
 import {Rating} from "./components/Rating";
 
 
@@ -49,8 +49,9 @@ function Card(element) {
                 <div onClick={() => {
                     addToBasket(element.id_product)
                 }}
-                   className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add
-                    to cart
+                   className="text-white flex bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add
+                    to basket
+                    <PlusIcon className="ml-2 block h-5 w-5"/>
                 </div>
 
 
@@ -60,7 +61,7 @@ function Card(element) {
 }
 
 export function Products() {
-    return <div className="flex flex-wrap gap-4 justify-center">
+    return <div className="flex mt-4 flex-wrap gap-4 justify-center">
         {elements.map(element => <Card key={element.id_product} {...element}/>)}
     </div>
 }
