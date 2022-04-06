@@ -8,6 +8,7 @@ import Products from "./components/Products";
 import Product from "./components/Product";
 import FAQ from "./components/FAQ";
 import Login from "./components/Login";
+import Signup from "./components/Signup";
 
 // import Header from "./components/Header";
 
@@ -24,6 +25,7 @@ function App() {
                     <Route path="*" element={<NoMatch/>}/>
                     <Route path="faq" element={<FAQ/>}/>
                     <Route path="login" element={<Login/>}/>
+                    <Route path="signup" element={<Signup/>}/>
                 </Route>
 
             </Routes>
