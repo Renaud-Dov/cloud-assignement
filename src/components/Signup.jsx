@@ -2,6 +2,7 @@ import {ArrowNarrowRightIcon} from '@heroicons/react/solid'
 import {Link} from "react-router-dom";
 import CountriesComboBox from "./CountriesComboBox";
 import {useState} from "react";
+
 function RequiredLabel(props) {
     return (
         <label htmlFor="first-name"
@@ -16,12 +17,10 @@ function RequiredLabel(props) {
 export default function Signup() {
 
     const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [country, setCountry] = useState("");
     const [city, setCity] = useState("");
-    const [region, setRegion] = useState("");
     const [postalCode, setPostalCode] = useState("");
     const [street, setStreet] = useState("");
     const [phone, setPhone] = useState("");
@@ -30,10 +29,13 @@ export default function Signup() {
 
     function handleSubmit(event) {
         event.preventDefault();
-        console.log(event.target["first-name"].value);
-        console.log(event.target["last-name"].value);
-        console.log(event.target["email-address"].value);
-        console.log(country);
+        console.log(email, firstName, lastName, country, city, postalCode, street, phone, birthday);
+        // if one of the fields is empty, do not submit
+        if (email === "" || firstName === "" || lastName === "" || country === "" || city === "" || postalCode === "" || street === "" || phone === "" || birthday === "") {
+            console.log("empty field");
+            return;
+        }
+        console.log("submitted");
 
     }
 
@@ -49,7 +51,7 @@ export default function Signup() {
                     </Link>
                 </p>
                 <form onSubmit={handleSubmit}>
-                    <div className=" overflow-hidden">
+                    <div className="overflow-hidden">
                         <div className="px-4 py-5 bg-white sm:p-6">
                             <div className="grid grid-cols-6 gap-6">
                                 <div className="col-span-6 sm:col-span-3">
@@ -63,6 +65,7 @@ export default function Signup() {
                                            name="first-name"
                                            id="first-name"
                                            autoComplete="given-name"
+                                           placeholder="John"
                                            className="mt-1 focus:ring-orange-500 focus:border-orange-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                                     />
                                 </div>
@@ -78,6 +81,7 @@ export default function Signup() {
                                            name="last-name"
                                            id="last-name"
                                            autoComplete="family-name"
+                                           placeholder="Smith"
                                            className="mt-1 focus:ring-orange-500 focus:border-orange-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                                     />
                                 </div>
@@ -92,6 +96,7 @@ export default function Signup() {
                                            name="email-address"
                                            id="email-address"
                                            autoComplete="email"
+                                           placeholder="mail@example.com"
                                            className="mt-1 focus:ring-orange-500 focus:border-orange-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                                     />
                                 </div>
@@ -100,18 +105,12 @@ export default function Signup() {
                                                    className="block text-sm font-medium text-gray-700">
                                         Date of birth
                                     </RequiredLabel>
-                                    <div className="relative">
-                                        <div
-                                            className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
-
-                                        </div>
-
-                                    </div>
                                     <input onChange={(event) => setBirthday(event.target.value)}
 
                                            type="text"
                                            name="birth-date"
                                            id="birth"
+                                           placeholder="MM/DD/YYYY"
                                            className="mt-1 focus:ring-orange-500 focus:border-orange-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                                     />
                                 </div>
@@ -122,9 +121,9 @@ export default function Signup() {
                                         Country
                                     </RequiredLabel>
                                     <CountriesComboBox onChange={(value) => setCountry(value)}
-                                        id="country"
-                                        name="country"
-                                        autoComplete="country-name"
+                                                       id="country"
+                                                       name="country"
+                                                       autoComplete="country-name"
                                     />
                                 </div>
 
@@ -134,11 +133,12 @@ export default function Signup() {
                                         Street address
                                     </RequiredLabel>
                                     <input onChange={(event) => setStreet(event.target.value)}
-                                        type="text"
-                                        name="street-address"
-                                        id="street-address"
-                                        autoComplete="street-address"
-                                        className="mt-1 focus:ring-orange-500 focus:border-orange-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                                           type="text"
+                                           name="street-address"
+                                           id="street-address"
+                                           autoComplete="street-address"
+                                           placeholder="1234 Main St"
+                                           className="mt-1 focus:ring-orange-500 focus:border-orange-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                                     />
                                 </div>
 
@@ -147,38 +147,25 @@ export default function Signup() {
                                         City
                                     </RequiredLabel>
                                     <input onChange={(event) => setCity(event.target.value)}
-                                        type="text"
-                                        name="city"
-                                        id="city"
-                                        autoComplete="address-level2"
-                                        className="mt-1 focus:ring-orange-500 focus:border-orange-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                                           type="text"
+                                           name="city"
+                                           id="city"
+                                           autoComplete="address-level2"
+                                           className="mt-1 focus:ring-orange-500 focus:border-orange-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                                     />
                                 </div>
 
-                                <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-                                    <RequiredLabel htmlFor="region" className="block text-sm font-medium text-gray-700">
-                                        State / Province
-                                    </RequiredLabel>
-                                    <input onChange={(event) => setRegion(event.target.value)}
-                                        type="text"
-                                        name="region"
-                                        id="region"
-                                        autoComplete="address-level1"
-                                        className="mt-1 focus:ring-orange-500 focus:border-orange-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                                    />
-                                </div>
-
-                                <div className="col-span-6 sm:col-span-3 lg:col-span-2">
+                                <div className="col-span-6 sm:col-span-2 ">
                                     <RequiredLabel htmlFor="postal-code"
                                                    className="block text-sm font-medium text-gray-700">
                                         ZIP / Postal code
                                     </RequiredLabel>
                                     <input onChange={(event) => setPostalCode(event.target.value)}
-                                        type="text"
-                                        name="postal-code"
-                                        id="postal-code"
-                                        autoComplete="postal-code"
-                                        className="mt-1 focus:ring-orange-500 focus:border-orange-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                                           type="text"
+                                           name="postal-code"
+                                           id="postal-code"
+                                           autoComplete="postal-code"
+                                           className="mt-1 focus:ring-orange-500 focus:border-orange-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                                     />
                                 </div>
                             </div>
