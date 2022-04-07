@@ -21,13 +21,12 @@ function App() {
                     <Route index element={<Home/>}/>
                     <Route path="about" element={<About/>}/>
                     <Route path="products" element={<Products/>}/>
-                    <Route path="products/:id" element={<Product/>}/>
+                    <Route path="product/:id" element={<Product/>}/>
                     <Route path="*" element={<NoMatch/>}/>
                     <Route path="faq" element={<FAQ/>}/>
                     <Route path="login" element={<Login/>}/>
                     <Route path="signup" element={<Signup/>}/>
                 </Route>
-
             </Routes>
         </div>
     );

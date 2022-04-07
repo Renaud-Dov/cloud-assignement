@@ -6,7 +6,10 @@ const partitionKey = {kind: 'Hash', paths: ['/partitionKey']}
 const options = {
     endpoint: "https://axov.documents.azure.com:443/",
     key: process.env.DB_KEY,
-    userAgentSuffix: 'CosmosDBJavascriptQuickstart'
+    userAgentSuffix: 'CosmosDBJavascriptQuickstart',
+    connectionPolicy: {
+        enableEndpointDiscovery: false
+    }
 };
 
 const client = new CosmosClient(options)

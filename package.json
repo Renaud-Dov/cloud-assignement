@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@azure/arm-cosmosdb": "^15.0.0",
     "@azure/cosmos": "^3.15.1",
     "@headlessui/react": "^1.5.0",
     "@heroicons/react": "^1.0.6",
@@ -12,8 +13,10 @@
     "country-flag-icons": "^1.4.25",
     "flowbite": "^1.4.1",
     "i18n-iso-countries": "^7.4.0",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
+    "postcss-loader": "^6.2.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-hot-loader": "^4.13.0",
     "react-router-dom": "^6.2.2",
     "react-scripts": "5.0.0",
     "uuid": "^8.3.2",
@@ -22,6 +25,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "webpack": "webpack-dev-server",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -44,9 +48,21 @@
     ]
   },
   "devDependencies": {
+    "@babel/core": "^7.17.9",
+    "@babel/plugin-proposal-class-properties": "^7.16.7",
+    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-react": "^7.16.7",
     "@tailwindcss/forms": "^0.5.0",
     "autoprefixer": "^10.4.4",
+    "babel-loader": "^8.2.4",
+    "css-loader": "^6.7.1",
+    "html-webpack-plugin": "^5.5.0",
     "postcss": "^8.4.12",
-    "tailwindcss": "^3.0.23"
+    "style-loader": "^3.3.1",
+    "tailwindcss": "^3.0.23",
+    "webpack": "^5.72.0",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.8.1"
   }
 }
