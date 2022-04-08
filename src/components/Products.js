@@ -2,7 +2,6 @@ import {Link} from "react-router-dom";
 import {PlusIcon, StarIcon} from '@heroicons/react/solid'
 import {Rating} from "./Rating";
 import {useEffect, useState} from "react";
-import {ReadAll} from "../database";
 import axios from "axios";
 
 function LoadingCard() {
