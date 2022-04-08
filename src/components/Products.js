@@ -26,18 +26,18 @@ function LoadingCard() {
                     </div>
                 </div>
             </div>
-        </div>
-    )
+        </div>)
 }
 
 function addToBasket(id_product) {
 }
 
 function Card(element) {
-    return <div className="max-w-sm bg-white rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+    const [loading,setLoading] = useState(true)
+    return <div className={`${loading? "hidden ": ""}max-w-sm bg-white rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700`}>
         <Link to={`/product/${element.id}`}>
             <img className="p-8 rounded-t-lg" src={'https://flowbite.com/docs/images/products/product-1.png'}
-                 alt={"DickJohnson"}/>
+                 alt={"DickJohnson"} onLoad={(_) => setLoading(false)}/>
         </Link>
         <div className="px-5 pb-5">
             <Link to={`/product/${element.id}`}>
@@ -71,8 +71,13 @@ export default function Products() {
         setLoading(true);
         axios.get('https://api.cloud.itsligo.bugbear.fr/api/v1/items')
             .then(res => {
-                setLoading(false);
-                setElements(res.data)
+                // wait 2 seconds before showing the loading card
+                setElements(res.data);
+                setTimeout(() => {
+
+                    setLoading(false);
+                }, 500);
+
             })
             .catch(err => {
                 setLoading(false);
@@ -81,15 +86,12 @@ export default function Products() {
             })
     }, []);
     return <>
-        {loading ?
-            <div className="fixed mt-4 flex flex-wrap gap-5 mx-10 sm:mx-32 justify-center">
-                {[...Array(15)].map((_, i) => <LoadingCard key={i}/>)}
-            </div> : error ?
-                <h1 className="text-6xl text-center mt-12 font-Lato text-slate-400">No results found</h1>
-                :
-                <div className="flex mt-4 flex-wrap gap-5 mx-10  md:mx-3 justify-center">
-                    {elements.map(element => <Card key={element.id} {...element}/>)}
-                </div>}
+        {loading ? <div className="fixed mt-4 flex flex-wrap gap-5 mx-10 sm:mx-32 justify-center">
+            {[...Array(15)].map((_, i) => <LoadingCard key={i}/>)}
+        </div> : error ? <h1 className="text-6xl text-center mt-12 font-Lato text-slate-400">No results found</h1> :
+            <div className="flex mt-4 flex-wrap gap-5 mx-10  md:mx-3 justify-center">
+                {elements.map(element => <Card key={element.id} {...element}/>)}
+            </div>}
 
     </>
 }
