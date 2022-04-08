@@ -85,7 +85,7 @@ export default function Products() {
     return <>
         <div className="">
             {loading ?
-                <div className="fixed flex mt-4 flex-wrap gap-4 justify-center">
+                <div className="fixed mt-4 grid grid grid-flow-row-dense grid-cols-3 grid-rows-3 gap-4 justify-center">
                     {[...Array(30)].map((_, i) => <LoadingCard key={i}/>)}
                 </div> : error ?
                     <div className="w-full h-full flex justify-center items-center">
