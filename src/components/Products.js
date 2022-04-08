@@ -8,10 +8,10 @@ function LoadingCard() {
     const stars = []
     for (let i = 0; i < 3; i++) stars.push(<StarIcon key={i} className="w-5 h-5 text-slate-400"/>)
     for (let i = 3; i < 5; i++) stars.push(<StarIcon key={i} className="w-5 h-5 text-slate-200"/>)
-    return (<div className="bg-slate-50  rounded-lg shadow-md">
+    return (<div className="bg-slate-50 flex-1  rounded-lg shadow-md">
             <div className="animate-pulse">
-                <div className="p-8 rounded-t-lg bg-slate-400 h-52 w-full"/>
-                <div className="px-5 py-5 space-y-3 p-3">
+                <div className="rounded-t-lg bg-slate-400 h-52 w-full"/>
+                <div className="mx-5 my-5 space-y-3">
                     {/*title*/}
                     <div className="h-3 w-20 bg-slate-400 rounded"/>
                     {/*rating*/}
@@ -22,7 +22,7 @@ function LoadingCard() {
                         {/*price*/}
                         <div className="h-3 w-20 bg-slate-400 rounded"/>
                         {/*add to cart*/}
-                        <div className="rounded-lg bg-slate-400 h-10 w-40 px-5 py-2.5"/>
+                        <div className="rounded-lg bg-slate-400 h-10 w-40 ml-4 my-2.5"/>
                     </div>
                 </div>
             </div>
@@ -73,7 +73,6 @@ export default function Products() {
             .then(res => {
                 setLoading(false);
                 setElements(res.data)
-
             })
             .catch(err => {
                 setLoading(false);
@@ -84,7 +83,7 @@ export default function Products() {
     return <>
         <div className="">
             {loading ?
-                <div className="fixed mt-4 grid grid grid-flow-row-dense grid-cols-3 grid-rows-3 gap-4 justify-center">
+                <div className="fixed mt-4 flex flex-wrap gap-5 mx-32 justify-center">
                     {[...Array(30)].map((_, i) => <LoadingCard key={i}/>)}
                 </div> : error ?
                     <div className="w-full h-full flex justify-center items-center">
