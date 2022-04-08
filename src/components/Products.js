@@ -1,4 +1,4 @@
-import {Link} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
 import {PlusIcon, StarIcon} from '@heroicons/react/solid'
 import {Rating} from "./Rating";
 import {useEffect, useState} from "react";
@@ -81,20 +81,15 @@ export default function Products() {
             })
     }, []);
     return <>
-        <div className="">
-            {loading ?
-                <div className="fixed mt-4 flex flex-wrap gap-5 mx-32 justify-center">
-                    {[...Array(30)].map((_, i) => <LoadingCard key={i}/>)}
-                </div> : error ?
-                    <div className="w-full h-full flex justify-center items-center">
-                        <div className="text-red-700">
-                            Error
-                        </div>
-                    </div> :
-                    <div className="flex mt-4 flex-wrap gap-4 justify-center">
-                        {elements.map(element => <Card key={element.id} {...element}/>)}
-                    </div>}
-        </div>
+        {loading ?
+            <div className="fixed mt-4 flex flex-wrap gap-5 mx-10 sm:mx-32 justify-center">
+                {[...Array(15)].map((_, i) => <LoadingCard key={i}/>)}
+            </div> : error ?
+                <h1 className="text-6xl text-center mt-12 font-Lato text-slate-400">No results found</h1>
+                :
+                <div className="flex mt-4 flex-wrap gap-5 mx-10  md:mx-3 justify-center">
+                    {elements.map(element => <Card key={element.id} {...element}/>)}
+                </div>}
 
     </>
 }
