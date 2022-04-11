@@ -71,7 +71,7 @@ export default function Products() {
         setLoading(true);
         axios.get('https://api.cloud.itsligo.bugbear.fr/api/v1/items')
             .then(res => {
-                // wait 2 seconds before showing the loading card
+                // wait 0.5 seconds before showing the loading card
                 setElements(res.data);
                 setTimeout(() => {
 
