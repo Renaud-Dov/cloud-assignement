@@ -71,7 +71,7 @@ export default function CountriesComboBox(props) {
                             </div>) :
                         (filteredCountries.map((country, index) => (
                             <Combobox.Option key={index} value={country}
-                                             className={({active}) => `cursor-default select-none relative flex items-center
+                                             className={({active}) => `flex cursor-default select-none relative flex items-center
                                            py-2 pr-4 hover:bg-orange-400 ${active ? 'text-white bg-orange-600' : 'text-gray-900'}`}>
                                 <Flag country={country} className="w-4 h-4 ml-5"/>
                                 <span className={`block pl-5 truncate font-normal`}>{country}</span>
