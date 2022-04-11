@@ -1,5 +1,5 @@
 /* This example requires Tailwind CSS v2.0+ */
-import {Fragment} from 'react'
+import {Fragment, useEffect, useState} from 'react'
 import {Popover, Transition} from '@headlessui/react'
 import {
     CalendarIcon,
@@ -11,7 +11,7 @@ import {
     XIcon,
 } from '@heroicons/react/outline'
 import {ChevronDownIcon, MusicNoteIcon} from '@heroicons/react/solid'
-import {Link} from "react-router-dom";
+import {Link, } from "react-router-dom";
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
@@ -24,10 +24,11 @@ const links = [{
 }, {
     name: "About us", icon: ShieldCheckIcon, link: '/about',
 }]
-const other_links = [
-    {name: "Contact", icon: PhoneIcon, link: '/contact',},
-    {name: "FAQ", icon: CalendarIcon, link: '/faq',}
-]
+const other_links = [{name: "Contact", icon: PhoneIcon, link: '/contact',}, {
+    name: "FAQ",
+    icon: CalendarIcon,
+    link: '/faq',
+}]
 // merge links and other_links
 const all_links = [...links, ...other_links]
 
@@ -81,17 +82,16 @@ export default function Header() {
                                     <div
                                         className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
                                         <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
-                                            {other_links.map((item, index) => (
-                                                <Popover.Button key={index}>
-                                                    <Link
-                                                        to={item.link}
+                                            {other_links.map((item, index) => (<Popover.Button key={index}>
+                                                <Link
+                                                    to={item.link}
 
-                                                        className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50">
-                                                        <item.icon className="flex-shrink-0 h-6 w-6 text-orange-600"
-                                                                   aria-hidden="true"/>
-                                                        <p className="ml-4 text-base font-medium text-gray-900">{item.name}</p>
-                                                    </Link>
-                                                </Popover.Button>))}
+                                                    className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50">
+                                                    <item.icon className="flex-shrink-0 h-6 w-6 text-orange-600"
+                                                               aria-hidden="true"/>
+                                                    <p className="ml-4 text-base font-medium text-gray-900">{item.name}</p>
+                                                </Link>
+                                            </Popover.Button>))}
                                         </div>
                                     </div>
                                 </Popover.Panel>
@@ -144,13 +144,12 @@ export default function Header() {
                     </div>
                     <div className="py-6 px-5 space-y-6">
                         <div className="grid grid-cols-2 gap-y-4 gap-x-8">
-                            {all_links.map((item, index) => (
-                                <Popover.Button key={index}
-                                                className="text-base text-left font-medium text-gray-900 hover:text-gray-700">
-                                    <Link to={item.link}>
-                                        {item.name}
-                                    </Link>
-                                </Popover.Button>))}
+                            {all_links.map((item, index) => (<Popover.Button key={index}
+                                                                             className="text-base text-left font-medium text-gray-900 hover:text-gray-700">
+                                <Link to={item.link}>
+                                    {item.name}
+                                </Link>
+                            </Popover.Button>))}
                         </div>
                         {/*login/signup mobile*/}
                         <div>
