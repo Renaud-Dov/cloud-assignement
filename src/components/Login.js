@@ -9,6 +9,7 @@ export default function Login(props) {
     const [email, setEmail] = useState(String);
     const [password, setPassword] = useState(String);
     const [remember, setRemember] = useState(false);
+
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
     let navigate = useNavigate();
@@ -17,6 +18,11 @@ export default function Login(props) {
         event.preventDefault();
         setLoading(true);
         setError("");
+        if (email.length === 0 || password.length === 0) {
+            setError("Please fill in all fields");
+            setLoading(false);
+            return;
+        }
 
         login(email, password).then(
             (response) => {
@@ -29,9 +35,9 @@ export default function Login(props) {
             }
         );
     }
-    if (getToken()) {
-        navigate("/",{replace: true});
-    }
+    // if (getToken()) {
+    //     navigate("/",{replace: true});
+    // }
 
     return (
         <div

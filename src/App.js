@@ -9,13 +9,16 @@ import Product from "./components/Product";
 import FAQ from "./components/FAQ";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
+import {getToken,setToken, RequireAuth} from "./auth";
 
 // import Header from "./components/Header";
 
 function App() {
+    const token = getToken();
+    console.log(token);
     return (
         <div className="App">
-            <Header/>
+            <Header token={token}/>
             <Routes>
                 <Route path="/">
                     <Route index element={<Home/>}/>
@@ -24,8 +27,13 @@ function App() {
                     <Route path="product/:id" element={<Product/>}/>
                     <Route path="*" element={<NoMatch/>}/>
                     <Route path="faq" element={<FAQ/>}/>
+
+                    <Route path={"dashboard"} element={
+                        <RequireAuth token={token}>
+                        </RequireAuth>
+                    }/>
                     <Route path="login" element={<Login/>}/>
-                    <Route path="signup" element={<Signup/>}/>
+                    <Route path="signup" element={<Signup/>} />
                 </Route>
             </Routes>
         </div>
