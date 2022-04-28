@@ -1,8 +1,8 @@
 export default function About() {
     return (
         <div>
-            <h1>About</h1>
-            <p>This is the TodoList app v1.0.0. It is part of a React crash course</p>
+            <iframe title={"title"} className="w-screen h-screen" src="https://chromedino.com/" frameBorder="0" scrolling="no" width="100%" height="100%"
+                    loading="lazy"></iframe>
         </div>
     );
 }

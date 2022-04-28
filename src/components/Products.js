@@ -3,7 +3,72 @@ import {PlusIcon, StarIcon} from '@heroicons/react/solid'
 import {Rating} from "./Rating";
 import {useEffect, useState} from "react";
 import axios from "axios";
-
+const cards = [
+    {
+        instrument_name: 'Product 3',
+        id_product: 3,
+        price: '$300',
+        img: 'https://flowbite.com/docs/images/products/product-1.png',
+        alt: 'Product 3 image',
+        rating: 2,
+    },
+    {
+        instrument_name: 'Product 4',
+        id_product: 4,
+        price: '$400',
+        img: 'https://flowbite.com/docs/images/products/product-2.png',
+        alt: 'Product 4 image',
+        rating: 3,
+    },
+    {
+        instrument_name: 'Product 5',
+        id_product: 5,
+        price: '$500',
+        img: 'https://flowbite.com/docs/images/products/product-3.png',
+        alt: 'Product 5 image',
+        rating: 4,
+    },
+    {
+        instrument_name: 'Product 6',
+        id_product: 6,
+        price: '$600',
+        img: 'https://flowbite.com/docs/images/products/product-4.png',
+        alt: 'Product 6 image',
+        rating: 5,
+    },
+    {
+        instrument_name: 'Product 7',
+        id_product: 7,
+        price: '$700',
+        img: 'https://flowbite.com/docs/images/products/product-5.png',
+        alt: 'Product 7 image',
+        rating: 4,
+    },
+    {
+        instrument_name: 'Product 8',
+        id_product: 8,
+        price: '$800',
+        img: 'https://flowbite.com/docs/images/products/product-6.png',
+        alt: 'Product 8 image',
+        rating: 3,
+    },
+    {
+        instrument_name: 'Product 9',
+        id_product: 9,
+        price: '$900',
+        img: 'https://flowbite.com/docs/images/products/product-7.png',
+        alt: 'Product 9 image',
+        rating: 2,
+    },
+    {
+        instrument_name: 'Product 10',
+        id_product: 10,
+        price: '$1000',
+        img: 'https://flowbite.com/docs/images/products/product-8.png',
+        alt: 'Product 10 image',
+        rating: 1,
+    }
+]
 function LoadingCard() {
     const stars = []
     for (let i = 0; i < 3; i++) stars.push(<StarIcon key={i} className="w-5 h-5 text-slate-400"/>)
@@ -68,22 +133,25 @@ export default function Products() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
     useEffect(() => {
-        setLoading(true);
-        axios.get('https://api.cloud.itsligo.bugbear.fr/api/v1/items')
-            .then(res => {
-                // wait 0.5 seconds before showing the loading card
-                setElements(res.data);
-                setTimeout(() => {
+        // setLoading(true);
+        setLoading(false);
+        setElements(cards);
 
-                    setLoading(false);
-                }, 500);
-
-            })
-            .catch(err => {
-                setLoading(false);
-                setError(true);
-                console.log(err)
-            })
+        // axios.get('https://api.cloud.itsligo.bugbear.fr/api/v1/items')
+        //     .then(res => {
+        //         // wait 0.5 seconds before showing the loading card
+        //         setElements(res.data);
+        //         setTimeout(() => {
+        //
+        //             setLoading(false);
+        //         }, 500);
+        //
+        //     })
+        //     .catch(err => {
+        //         setLoading(false);
+        //         setError(true);
+        //         console.log(err)
+        //     })
     }, []);
     return <>
         {loading ? <div className="fixed mt-4 flex flex-wrap gap-5 mx-10 sm:mx-32 justify-center">

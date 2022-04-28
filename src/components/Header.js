@@ -18,8 +18,6 @@ function classNames(...classes) {
 }
 
 const links = [{
-    name: 'Products', icon: ViewGridIcon, link: '/products',
-}, {
     name: "Repair instrument", icon: PlayIcon, link: '/repair',
 }, {
     name: "About us", icon: ShieldCheckIcon, link: '/about',

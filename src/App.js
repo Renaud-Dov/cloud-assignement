@@ -10,6 +10,7 @@ import FAQ from "./components/FAQ";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import {getToken,setToken, RequireAuth} from "./auth";
+import Repair from "./components/Repair";
 
 // import Header from "./components/Header";
 
@@ -21,12 +22,12 @@ function App() {
             <Header token={token}/>
             <Routes>
                 <Route path="/">
-                    <Route index element={<Home/>}/>
+                    <Route index element={<Products/>}/>
                     <Route path="about" element={<About/>}/>
-                    <Route path="products" element={<Products/>}/>
                     <Route path="product/:id" element={<Product/>}/>
                     <Route path="*" element={<NoMatch/>}/>
                     <Route path="faq" element={<FAQ/>}/>
+                    <Route path="repair" element={<Repair/>}/>
 
                     <Route path={"dashboard"} element={
                         <RequireAuth token={token}>
